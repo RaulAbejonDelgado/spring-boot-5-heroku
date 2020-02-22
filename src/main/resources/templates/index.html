@@ -41,12 +41,12 @@
                     <td th:text="${partner.surname}"></td>
                     <td th:text="${partner.email}"></td>
                     <td th:text="${partner.createAt}"></td>
-                    <td><a sec:authorize="isAuthenticated()" class="btn btn-secondary btn-xs" th:href="@{/saleorder/sale-order/} + ${partner.id}" th:text="'Crear factura'"></a>
+                    <td sec:authorize="isAuthenticated()"><a class="btn btn-secondary btn-xs" th:href="@{/saleorder/sale-order/} + ${partner.id}" th:text="'Crear factura'"></a>
                     </td>
-                    <td><a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary btn-xs" th:href="@{/partner-form/} + ${partner.id}"
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-primary btn-xs" th:href="@{/partner-form/} + ${partner.id}"
                            th:text="editar"></a>
                     </td>
-                    <td><a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-danger btn-xs" th:href="@{/delete/} + ${partner.id}" th:text="Eliminar"
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-danger btn-xs" th:href="@{/delete/} + ${partner.id}" th:text="Eliminar"
                            onclick="return confirm(document.getElementById('deletePartner').textContent)"></a></td>
                 </tr>
                 </tbody>
