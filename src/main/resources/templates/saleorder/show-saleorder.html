@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<div class="container py-4">
+    <div class="card" bg-light>
+        <div class="header" th:text="${title}">
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">
+                <a th:href="@{'../../show/'}+ ${saleorder.partner.id}" class="btn btn-light btn-xs">Volver</a>
+                <a class="btn btn-danger btn-xs float-right mx-5" th:href="@{'/saleorder/show/' + ${saleorder.id}(format=pdf)}">PDF</a>
+                <a class="btn btn-success btn-xs float-right" th:href="@{'/saleorder/show/' + ${saleorder.id}(format=xlsx)}">XLS</a>
+            </h4>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-primary" th:text="#{text.saleorder.partner.title}"></li>
+                <li class="list-group-item" th:text="${saleorder.partner}"></li>
+                <li class="list-group-item" th:text="${saleorder.partner.email}"></li>
+            </ul>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success" th:text="#{text.saleorder.title}"></li>
+                <li class="list-group-item " th:text="'Pedido: '+ ${saleorder.id}"></li>
+                <li class="list-group-item " th:text="'Descripcion: '+ ${saleorder.description}"></li>
+                <li class="list-group-item " th:if="${#strings.isEmpty(saleorder.obserbation)}"
+                    th:text="'Sin observaciones'"></li>
+                <li class="list-group-item " th:text="'Fecha: '+ ${saleorder.createAt}"></li>
+            </ul>
+            <table class="table table-striped table-hover table-bordered my-3">
+                <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="line: ${saleorder.lines}">
+                    <td th:text="${line.product.name}"></td>
+                    <td th:text="${line.quantiy}"></td>
+                    <td th:text="${line.product.price}"></td>
+                    <td th:text="${line.computeTotal()}"></td>
+                </tr>
+                </tbody>
+
+            </table>
+            <h5 class="float-right ml-2">Importe total : <span class="badge bg-info" th:text="${saleorder.total}"/></h5>
+            </h4>
+        </div>
+    </div>
+</div>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<div class="container py-4">
+    <div class="card" bg-light>
+        <div class="header" th:text="${title}">
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">
+                <a class="btn btn-primary btn-xs" th:href="@{/show/} + ${saleOrder.partner.id}" th:text="'Volver'"></a>
+
+            </h4>
+            <form th:action="@{/saleorder/sale-order}" th:object="${saleOrder}" method="post">
+                <div class="form-group-row">
+                    <label for="partner" class="col-sm-2 col-form-label" th:text="Partner"> </label>
+                    <input name="partner" id="partner"
+                           th:value="${saleOrder.partner.name} + ' ' + ${saleOrder.partner.surname}"
+                           class="form-control" disabled="disabled">
+                </div>
+                <div class="form-group-row">
+
+                    <label for="description" class="col-sm-2 col-form-label" th:text="Description"> </label>
+                    <div class="col-sm-6">
+                        <input name="description" id="description" type="text" th:field="*{description}"
+                               class="form-control" th:errorClass="'form-control is-invalid'">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+                    </div>
+                </div>
+                <div class="form-group-row">
+                    <label for="obserbation" class="col-sm-2 col-form-label" th:text="Observacion"> </label>
+                    <div class="col-sm-6">
+
+                        <textarea name="obserbation" id="obserbation" th:field="*{obserbation}"
+                                  class="form-control"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group-row">
+
+                    <label for="find_out_product" class="col-sm-2 col-form-label" th:text="'Buscar producto'"> </label>
+                    <div class="col-sm-6">
+
+                        <input type="text" name="find_out_product" id="find_out_product" class="form-control">
+                    </div>
+                </div>
+
+                <table th:replace="saleorder/sale-orderline-template :: saleorderline"></table>
+
+                <table id="loadSaleOrderLine" class="table table-sm table-striper table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Producto</th>
+                            <th>Total</th>
+                            <th>Borrar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <h5>Total: <span class="badge badge-secondary" id="total_amount">0</span></h5>
+
+                <div class="form-group-row mt-5">
+                    <div class="col-sm-6">
+                        <input type="submit" th:value="${title}" class="btn btn-secondary">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<footer th:replace="layout/layout :: footer"></footer>
+<script th:replace="saleorder/js/auto-complete-products :: javascript"></script>
+</body>
+
+</html>

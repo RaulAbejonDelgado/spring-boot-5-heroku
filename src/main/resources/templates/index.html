@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+<body>
+<div id="deletePartner" th:text="#{text.partner.delete}" style="display: none;"></div>
+<header th:replace="layout/layout :: header"></header>
+<div class="container py-4">
+    <div class="card" bg-light>
+        <div class="header" th:text="${Title}">
+            <h1
+                    class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
+                    th:text="${Title}">
+            </h1>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">
+                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/partner-form}" class="btn btn-success btn-xs">Create Partnerr</a>
+                <a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-success btn-xs float-right" th:href="@{'/index' (format=csv)}">CSV</a>
+                <a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-outline-success btn-xs float-right" th:href="@{'/index' (format=xml)}">XML</a>
+                <a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-outline-warning btn-xs float-right" th:href="@{'/index' (format=json)}">JSON</a>
+            </h4>
+            <table class="table table-striped">
+                <thead class="text-light bg-dark">
+                <tr>
+                    <td sec:authorize="isAuthenticated()">Id</td>
+                    <td th:text="#{text.partner.name}">Nombre</td>
+                    <td th:text="#{text.partner.surname}">Apellido</td>
+                    <td th:text="#{text.partner.email}">Email</td>
+                    <td th:text="#{text.partner.createAt}">Fecha</td>
+                    <td sec:authorize="isAuthenticated()">Crear factura</td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')">Editar</td>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="partner: ${partners}">
+                    <td>
+                        <a sec:authorize="isAuthenticated()" class="btn btn-primary btn-xs" th:href="@{/show/} + ${partner.id}" th:text="${partner.id}"></a>
+                    </td>
+                    <td sec:authorize="isAuthenticated()" th:text="${partner.name}"></td>
+                    <td sec:authorize="isAuthenticated()" th:text="${partner.surname}"></td>
+                    <td sec:authorize="isAuthenticated()" th:text="${partner.email}"></td>
+                    <td sec:authorize="isAuthenticated()" th:text="${partner.createAt}"></td>
+                    <td><a sec:authorize="isAuthenticated()" class="btn btn-secondary btn-xs" th:href="@{/saleorder/sale-order/} + ${partner.id}" th:text="'Crear factura'"></a>
+                    </td>
+                    <td><a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary btn-xs" th:href="@{/partner-form/} + ${partner.id}"
+                           th:text="editar"></a>
+                    </td>
+                    <td><a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-danger btn-xs" th:href="@{/delete/} + ${partner.id}" th:text="Eliminar"
+                           onclick="return confirm(document.getElementById('deletePartner').textContent)"></a></td>
+                </tr>
+                </tbody>
+            </table>
+            <nav th:replace="paginator-nav :: paginator"></nav>
+        </div>
+    </div>
+</div>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

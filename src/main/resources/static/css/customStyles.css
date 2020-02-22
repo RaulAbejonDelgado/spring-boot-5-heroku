@@ -1,0 +1,13 @@
+.login-inputs{
+    margin: auto;
+}
+
+.login-box {
+    width:50%;
+    margin: auto;
+}
+
+.logout-box{
+    background:#ea0a0a;
+    color:#ffffff;
+}

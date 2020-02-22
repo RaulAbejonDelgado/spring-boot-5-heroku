@@ -1,0 +1,64 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<div class="container py-4">
+    <div class="card" bg-light>
+        <div class="header" th:text="${title}">
+            <h1
+                    class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
+                    th:text="${title}">
+
+            </h1>
+        </div>
+        <div class="card-body">
+            <div class="card-title" >
+                <a class="btn btn-secondary btn-xs" th:href="@{/saleorder/sale-order/} + ${partner.id}" th:text="'Crear factura'"></a>
+            </div>
+            <img th:if="${#strings.length(partner.photo) > 0}" class="img-thumbnail rounded float-left"
+                 style="max-width: 25%;"
+                 th:src="@{'/uploads/' + ${partner.photo}}"
+                 th:alt="${partner.photo}"/>
+
+            <ul class="list-group">
+                <li class="list-group-item" th:text="${partner.name}"></li>
+                <li class="list-group-item" th:text="${partner.surname}"></li>
+                <li class="list-group-item" th:text="${partner.email}"></li>
+                <li class="list-group-item" th:text="${partner.createAt}"></li>
+
+            </ul>
+            <div th:if="${#lists.isEmpty(partner.saleOrders)}" class="alert alert-info my-4" th:text="'With out sale orders assigned'"></div>
+            <table th:if="${not #lists.isEmpty(partner.saleOrders)}" class="table table-bordered table-striped my-4">
+                <thead>
+                <tr>
+                    <td>Saler order</td>
+                    <td>Description</td>
+                    <td>Date</td>
+                    <td>Total</td>
+                    <td>Ver</td>
+                    <td>Borrar</td>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="saleOrder: ${partner.saleOrders}">
+                        <td th:text="${saleOrder.id}">Saler order</td>
+                        <td th:text="${saleOrder.description}">Description</td>
+                        <td th:text="${saleOrder.createAt}"> Date</td>
+                        <td th:text="${saleOrder.total}">Total</td>
+                        <td><a class="btn btn-xs btn-primary" th:href="@{/saleorder/show/} + ${saleOrder.id}" th:text="'Detalle'"></a></td>
+                        <td><a class="btn btn-xs btn-danger" th:href="@{/saleorder/delete/} + ${saleOrder.id}" th:text="'Borrar'" onclick="return confirm('¿Estas seguro?')"></a></td>
+                        <!--<tr th:each="line: ${saleOrder.lines}">-->
+                            <!--<th th:text="${line.quantiy}"></th>-->
+                        <!--</tr>-->
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <footer th:replace="layout/layout :: footer"></footer>
+</div>
+
+</body>
+</html>

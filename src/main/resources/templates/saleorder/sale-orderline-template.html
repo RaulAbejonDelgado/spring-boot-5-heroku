@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<table th:fragment="saleorderline" class="d-none">
+    <tbody id="saleOrderLine">
+    <tr id="ROW_{ID}">
+        <td class="d-none"><input type="hidden" value="{ID}" name="item_id[]"></td>
+        <td>{NAME}</td>
+        <td>{PRICE}</td>
+        <td><input type="number"
+                   value="1" name="quantity[]" id="quantity_{ID}" class="form-control col-sm-4"
+                   onchange="itemsHelper.calculeAmountLine({ID},{PRICE},this.value);">
+        </td>
+        <td><span id="total_amount_line_{ID}">0</span></td>
+        <td><a href="#" class="btn- btn-danger btn-xs" onclick="itemsHelper.deleteLine({ID}) ;">X</a> </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
