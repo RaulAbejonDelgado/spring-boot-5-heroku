@@ -34,8 +34,8 @@
                 </thead>
                 <tbody>
                 <tr th:each="partner: ${partners}">
-                    <td>
-                        <a sec:authorize="isAuthenticated()" class="btn btn-primary btn-xs" th:href="@{/show/} + ${partner.id}" th:text="${partner.id}"></a>
+                    <td sec:authorize="isAuthenticated()">
+                        <a  class="btn btn-primary btn-xs" th:href="@{/show/} + ${partner.id}" th:text="${partner.id}"></a>
                     </td>
                     <td th:text="${partner.name}"></td>
                     <td th:text="${partner.surname}"></td>
