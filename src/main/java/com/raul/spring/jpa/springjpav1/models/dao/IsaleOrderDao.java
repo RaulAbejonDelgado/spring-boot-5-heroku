@@ -1,6 +1,6 @@
 package com.raul.spring.jpa.springjpav1.models.dao;
 
-import com.raul.spring.jpa.springjpav1.models.service.models.entity.SaleOrder;
+import com.raul.spring.jpa.springjpav1.models.entity.SaleOrder;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

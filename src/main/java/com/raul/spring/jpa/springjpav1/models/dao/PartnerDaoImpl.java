@@ -1,6 +1,6 @@
 package com.raul.spring.jpa.springjpav1.models.dao;
 
-import com.raul.spring.jpa.springjpav1.models.service.models.entity.Partner;
+import com.raul.spring.jpa.springjpav1.models.entity.Partner;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

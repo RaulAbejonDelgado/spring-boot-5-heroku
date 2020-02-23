@@ -1,9 +1,9 @@
 package com.raul.spring.jpa.springjpav1.controllers;
 
-import com.raul.spring.jpa.springjpav1.models.service.models.entity.Partner;
-import com.raul.spring.jpa.springjpav1.models.service.models.service.IPartnerRepoService;
-import com.raul.spring.jpa.springjpav1.models.service.models.service.IUploadService;
-import com.raul.spring.jpa.springjpav1.models.service.paginator.PageRender;
+import com.raul.spring.jpa.springjpav1.models.entity.Partner;
+import com.raul.spring.jpa.springjpav1.models.service.IPartnerRepoService;
+import com.raul.spring.jpa.springjpav1.models.service.IUploadService;
+import com.raul.spring.jpa.springjpav1.util.paginator.PageRender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

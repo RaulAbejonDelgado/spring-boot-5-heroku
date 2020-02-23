@@ -3,7 +3,7 @@ package com.raul.spring.jpa.springjpav1;
 import com.raul.spring.jpa.springjpav1.auth.filter.JwtAuthenticationFilter;
 import com.raul.spring.jpa.springjpav1.auth.filter.JwtAuthorizationFilter;
 import com.raul.spring.jpa.springjpav1.auth.service.JwtService;
-import com.raul.spring.jpa.springjpav1.models.service.UserDetailsJpaServcie;
+import com.raul.spring.jpa.springjpav1.models.service.UserDetailsJpaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+;
 
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -33,7 +35,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
      * JPA authentication
      */
     @Autowired
-    private UserDetailsJpaServcie userDetailsJpaServcie;
+    private UserDetailsJpaService userDetailsJpaServcie;
 
     @Autowired
     private JwtService jwtService;

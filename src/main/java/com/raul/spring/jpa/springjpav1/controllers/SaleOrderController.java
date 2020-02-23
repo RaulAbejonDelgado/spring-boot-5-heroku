@@ -1,11 +1,11 @@
 package com.raul.spring.jpa.springjpav1.controllers;
 
-import com.raul.spring.jpa.springjpav1.models.service.models.dao.IsaleOrderDao;
-import com.raul.spring.jpa.springjpav1.models.service.models.entity.Partner;
-import com.raul.spring.jpa.springjpav1.models.service.models.entity.Product;
-import com.raul.spring.jpa.springjpav1.models.service.models.entity.SaleOrder;
-import com.raul.spring.jpa.springjpav1.models.service.models.entity.SaleOrderLine;
-import com.raul.spring.jpa.springjpav1.models.service.models.service.IPartnerRepoService;
+import com.raul.spring.jpa.springjpav1.models.dao.IsaleOrderDao;
+import com.raul.spring.jpa.springjpav1.models.entity.Partner;
+import com.raul.spring.jpa.springjpav1.models.entity.Product;
+import com.raul.spring.jpa.springjpav1.models.entity.SaleOrder;
+import com.raul.spring.jpa.springjpav1.models.entity.SaleOrderLine;
+import com.raul.spring.jpa.springjpav1.models.service.IPartnerRepoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

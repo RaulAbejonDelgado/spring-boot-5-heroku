@@ -2,7 +2,7 @@ package com.raul.spring.jpa.springjpav1.auth.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.raul.spring.jpa.springjpav1.models.service.auth.SimpleGrantedAuthorityMixin;
+import com.raul.spring.jpa.springjpav1.auth.SimpleGrantedAuthorityMixin;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;

@@ -1,7 +1,7 @@
 package com.raul.spring.jpa.springjpav1.auth.filter;
 
-import com.raul.spring.jpa.springjpav1.models.service.auth.service.JwtService;
-import com.raul.spring.jpa.springjpav1.models.service.auth.service.JwtServiceImpl;
+import com.raul.spring.jpa.springjpav1.auth.service.JwtService;
+import com.raul.spring.jpa.springjpav1.auth.service.JwtServiceImpl;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.authentication.AuthenticationManager;

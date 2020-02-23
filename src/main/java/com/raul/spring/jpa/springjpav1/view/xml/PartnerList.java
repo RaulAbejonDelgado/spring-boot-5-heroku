@@ -1,5 +1,7 @@
 package com.raul.spring.jpa.springjpav1.view.xml;
 
+import com.raul.spring.jpa.springjpav1.models.entity.Partner;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;

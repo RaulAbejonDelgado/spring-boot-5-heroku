@@ -1,5 +1,7 @@
 package com.raul.spring.jpa.springjpav1.models.service;
 
+import com.raul.spring.jpa.springjpav1.models.entity.Partner;
+
 import java.util.List;
 
 public interface IPartnerService {

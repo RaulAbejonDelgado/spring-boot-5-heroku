@@ -1,6 +1,7 @@
 package com.raul.spring.jpa.springjpav1.models.dao;
 
-import com.raul.spring.jpa.springjpav1.models.service.models.entity.UserEntity;
+
+import com.raul.spring.jpa.springjpav1.models.entity.UserEntity;
 import org.springframework.data.repository.CrudRepository;
 
 /**

@@ -1,5 +1,6 @@
 package com.raul.spring.jpa.springjpav1.view.xml;
 
+import com.raul.spring.jpa.springjpav1.models.entity.Partner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
