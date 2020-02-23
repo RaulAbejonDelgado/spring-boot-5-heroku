@@ -81,7 +81,7 @@ public class SaleOrderController {
             return "redirect:/list";
         }
 
-        return "/saleorder/new-sale-order";
+        return "saleorder/new-sale-order";
     }
 
     @GetMapping(value="/charge-products/{term}", produces = {"application/json"})
