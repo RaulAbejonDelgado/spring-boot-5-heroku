@@ -1,17 +1,11 @@
 package com.raul.spring.jpa.springjpav1.models.dao;
 
-import com.raul.spring.jpa.springjpav1.models.entity.Partner;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import com.raul.spring.jpa.springjpav1.models.service.models.entity.Partner;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 
 @Repository
 public class PartnerDaoImpl implements IPartner {

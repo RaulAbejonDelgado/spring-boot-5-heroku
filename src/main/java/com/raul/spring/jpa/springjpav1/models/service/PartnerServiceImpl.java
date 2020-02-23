@@ -1,7 +1,5 @@
 package com.raul.spring.jpa.springjpav1.models.service;
 
-import com.raul.spring.jpa.springjpav1.models.dao.IPartner;
-import com.raul.spring.jpa.springjpav1.models.entity.Partner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

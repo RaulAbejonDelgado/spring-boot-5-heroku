@@ -5,8 +5,6 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
-import com.raul.spring.jpa.springjpav1.models.entity.SaleOrder;
-import com.raul.spring.jpa.springjpav1.models.entity.SaleOrderLine;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.document.AbstractPdfView;

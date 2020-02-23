@@ -1,7 +1,5 @@
 package com.raul.spring.jpa.springjpav1.view.xlsx;
 
-import com.raul.spring.jpa.springjpav1.models.entity.SaleOrder;
-import com.raul.spring.jpa.springjpav1.models.entity.SaleOrderLine;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Component;

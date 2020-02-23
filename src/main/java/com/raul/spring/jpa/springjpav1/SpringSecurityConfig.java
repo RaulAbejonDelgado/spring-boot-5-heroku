@@ -1,19 +1,22 @@
 package com.raul.spring.jpa.springjpav1;
 
-import com.raul.spring.jpa.springjpav1.auth.handler.LoginSuccessHandler;
-import com.raul.spring.jpa.springjpav1.models.service.UserDetailsJpaService;
+import com.raul.spring.jpa.springjpav1.auth.filter.JwtAuthenticationFilter;
+import com.raul.spring.jpa.springjpav1.auth.filter.JwtAuthorizationFilter;
+import com.raul.spring.jpa.springjpav1.auth.service.JwtService;
+import com.raul.spring.jpa.springjpav1.models.service.UserDetailsJpaServcie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private LoginSuccessHandler successHandler;
+//    @Autowired
+//    private LoginSuccessHandler successHandler;
 
     /**
      * Jdbc authentication
@@ -30,7 +33,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
      * JPA authentication
      */
     @Autowired
-    private UserDetailsJpaService userDetailsJpaServcie;
+    private UserDetailsJpaServcie userDetailsJpaServcie;
+
+    @Autowired
+    private JwtService jwtService;
 
 
 
@@ -40,16 +46,14 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/","/css/**","/js/**","/images/**","/list/**","/locale/**","/api/**").permitAll()
-                .antMatchers("/show/**","/uploads/**").hasAnyRole("USER")
-                .antMatchers("/form/**","/delete/**","/saleorder/**").hasAnyRole("ADMIN")
+                .antMatchers("/","/css/**","/js/**","/images/**","/list/**","/locale/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().successHandler(successHandler).loginPage("/login").permitAll()
-                .and()
-                .logout().permitAll()
-                .and()
-                .exceptionHandling().accessDeniedPage("/error_http")
+                .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtService))
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtService))
+                .csrf().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);//disabled session
+
         ;
     }
 

@@ -1,10 +1,7 @@
 package com.raul.spring.jpa.springjpav1.view.xml;
 
-import com.raul.spring.jpa.springjpav1.models.entity.Partner;
-import com.raul.spring.jpa.springjpav1.util.paginator.PageRender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.oxm.Marshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.xml.MarshallingView;

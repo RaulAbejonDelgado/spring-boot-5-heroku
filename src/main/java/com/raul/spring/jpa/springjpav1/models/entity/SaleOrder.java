@@ -2,7 +2,6 @@ package com.raul.spring.jpa.springjpav1.models.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -34,7 +33,7 @@ public class SaleOrder implements Serializable {
     private Date createAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference //to skip redundancy
+    @JsonBackReference
     private Partner partner;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

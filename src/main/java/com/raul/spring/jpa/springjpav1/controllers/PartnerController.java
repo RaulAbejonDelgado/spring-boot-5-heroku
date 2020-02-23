@@ -1,10 +1,9 @@
 package com.raul.spring.jpa.springjpav1.controllers;
 
-import com.raul.spring.jpa.springjpav1.models.entity.Partner;
-import com.raul.spring.jpa.springjpav1.models.service.IPartnerRepoService;
-import com.raul.spring.jpa.springjpav1.models.service.IUploadService;
-import com.raul.spring.jpa.springjpav1.util.paginator.PageRender;
-import com.raul.spring.jpa.springjpav1.view.xml.PartnerList;
+import com.raul.spring.jpa.springjpav1.models.service.models.entity.Partner;
+import com.raul.spring.jpa.springjpav1.models.service.models.service.IPartnerRepoService;
+import com.raul.spring.jpa.springjpav1.models.service.models.service.IUploadService;
+import com.raul.spring.jpa.springjpav1.models.service.paginator.PageRender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +32,8 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Collection;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 @Controller
 public class PartnerController {

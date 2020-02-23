@@ -1,6 +1,5 @@
 package com.raul.spring.jpa.springjpav1.view.csv;
 
-import com.raul.spring.jpa.springjpav1.models.entity.Partner;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.AbstractView;
@@ -10,7 +9,6 @@ import org.supercsv.prefs.CsvPreference;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileWriter;
 import java.util.Map;
 
 @Component("index")// is mapping with partner list endpoint

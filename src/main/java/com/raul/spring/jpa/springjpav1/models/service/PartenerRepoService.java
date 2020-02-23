@@ -1,11 +1,5 @@
 package com.raul.spring.jpa.springjpav1.models.service;
 
-import com.raul.spring.jpa.springjpav1.models.dao.IPartnerRepository;
-import com.raul.spring.jpa.springjpav1.models.dao.IProductDao;
-import com.raul.spring.jpa.springjpav1.models.dao.IsaleOrderDao;
-import com.raul.spring.jpa.springjpav1.models.entity.Partner;
-import com.raul.spring.jpa.springjpav1.models.entity.Product;
-import com.raul.spring.jpa.springjpav1.models.entity.SaleOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

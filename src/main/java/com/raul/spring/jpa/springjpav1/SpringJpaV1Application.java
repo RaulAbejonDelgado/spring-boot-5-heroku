@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringJpaV1Application implements CommandLineRunner {
 
 	@Autowired
-	IUploadService uploadService;
+    IUploadService uploadService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringJpaV1Application.class, args);

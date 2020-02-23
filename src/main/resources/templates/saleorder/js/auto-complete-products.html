@@ -9,7 +9,7 @@
 
 				source : function(request, response) {
 					$.ajax({
-						url : url + request.term,
+						url : "https://spring-framework-5-app.herokuapp.com/saleorder/charge-products/" + request.term,
 						dataType : "json",
 						data : {
 							term : request.term

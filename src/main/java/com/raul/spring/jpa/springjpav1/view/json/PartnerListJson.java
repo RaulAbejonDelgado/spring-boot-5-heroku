@@ -1,7 +1,5 @@
 package com.raul.spring.jpa.springjpav1.view.json;
 
-import com.raul.spring.jpa.springjpav1.models.entity.Partner;
-import com.raul.spring.jpa.springjpav1.view.xml.PartnerList;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;

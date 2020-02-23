@@ -1,8 +1,5 @@
 package com.raul.spring.jpa.springjpav1.models.service;
 
-import com.raul.spring.jpa.springjpav1.models.dao.IUserDao;
-import com.raul.spring.jpa.springjpav1.models.entity.Role;
-import com.raul.spring.jpa.springjpav1.models.entity.UserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
