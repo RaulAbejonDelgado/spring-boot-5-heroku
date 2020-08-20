@@ -14,8 +14,9 @@ public interface IPartnerRepoService {
     public Page<Partner> findAll(Pageable pageable);
 
     public void save(Partner partner);
+    public Partner saveAndReturnPartner(Partner partner);
 
-    public Partner findOne(Long id) throws Exception;
+    public Partner findOne(Long id);
 
     public Partner fetchByIdWithSaleOrders(Long id);
 

@@ -42,9 +42,15 @@ public class PartenerRepoService implements IPartnerRepoService{
         partnerDao.save(partner);
     }
 
+    @Transactional
+    @Override
+    public Partner saveAndReturnPartner(Partner partner) {
+        return partnerDao.save(partner);
+    }
+
     @Transactional(readOnly = true)
     @Override
-    public Partner findOne(Long id) throws Exception {
+    public Partner findOne(Long id) {
         return partnerDao.findById(id).orElseGet(null);
     }
 
