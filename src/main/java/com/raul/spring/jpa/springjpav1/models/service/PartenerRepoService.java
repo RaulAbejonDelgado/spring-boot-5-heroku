@@ -7,6 +7,7 @@ import com.raul.spring.jpa.springjpav1.models.entity.Partner;
 import com.raul.spring.jpa.springjpav1.models.entity.Product;
 import com.raul.spring.jpa.springjpav1.models.entity.SaleOrder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -44,7 +45,7 @@ public class PartenerRepoService implements IPartnerRepoService{
 
     @Transactional
     @Override
-    public Partner saveAndReturnPartner(Partner partner) {
+    public Partner saveAndReturnPartner(Partner partner) throws DataAccessException {
         return partnerDao.save(partner);
     }
 

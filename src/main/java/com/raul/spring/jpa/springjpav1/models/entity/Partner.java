@@ -7,6 +7,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,10 +29,16 @@ public class Partner implements Serializable {
     private Long id;
 
     @NotEmpty
+    @NotNull
+    @Size(min=4, max=20)
     private String name;
     @NotEmpty
+    @NotNull
     private String surname;
+
     @NotEmpty
+    @Email
+    @NotNull
     @Email
     private String email;
 

@@ -5,13 +5,19 @@ import com.raul.spring.jpa.springjpav1.models.service.IPartnerRepoService;
 import com.raul.spring.jpa.springjpav1.view.xml.PartnerList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -25,6 +31,12 @@ public class PartnerRestController {
     @Secured("ROLE_ADMIN")
     public PartnerList listRest() {
         return new PartnerList(partnerRepoService.findAll());
+    }
+
+    @GetMapping(value = {"/partner/list-partner/page/{page}"})
+    public Page<Partner> listRest(@PathVariable int page) {
+        Pageable pageRequest = PageRequest.of(page, 6);
+        return partnerRepoService.findAll(pageRequest);
     }
 
     @GetMapping("partner/{id}")
@@ -50,31 +62,50 @@ public class PartnerRestController {
     }
 
     @PostMapping("/partner")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> partnerCreate(@RequestBody Partner partner){
-        //return partnerRepoService.saveAndReturnPartner(partner);
+    public ResponseEntity<?> partnerCreate(@Valid @RequestBody Partner partner, BindingResult bindingResult){
         Map<String, Object> response = new HashMap<>();
         Partner newPartner = null ;
+
+        if(bindingResult.hasErrors()){
+            response.put("errors",
+                    bindingResult.getFieldErrors()
+                            .stream()
+                            .map(error -> "the field "+ error.getField() + ": "+ error.getDefaultMessage())
+                            .collect(Collectors.toList()) );
+            return new ResponseEntity<Map<String, Object>>(response , HttpStatus.CONFLICT) ;
+        }
+
         try{
             newPartner = partnerRepoService.saveAndReturnPartner(partner);
-        } catch (DataAccessException e){
-            response.put("errorMsg","Error trying to connect to the db");
-            response.put("errorCause",e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+        } catch (Exception e){
+            if(e.getMessage().contains("validation")){
+                response.put("errorMsg","Error of validation in fields");
+            }
+            response.put("errorCause",e.getMessage().concat(": ").concat(e.getMessage()));
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        response.put("successError" , "New partner created successfully");
+        response.put("successError" , "New partner "+ partner.getName()+" created successfully");
         response.put("partner", newPartner);
 
         return new ResponseEntity<Map<String, Object>>(response , HttpStatus.CREATED) ;
     }
 
     @PutMapping("/partner/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> partnerEdition(@RequestBody Partner partner,
-                                  @PathVariable Long id) {
+    public ResponseEntity<?> partnerEdition(@Valid @RequestBody Partner partner,
+                                  @PathVariable Long id, BindingResult bindingResult) {
         Map<String, Object> response = new HashMap<>();
         Partner partnerToUpdate = null;
+
+        if(bindingResult.hasErrors()){
+            response.put("errors",
+                    bindingResult.getFieldErrors()
+                            .stream()
+                            .map(error -> error.getDefaultMessage())
+                            .collect(Collectors.toList()) );
+            return new ResponseEntity<Map<String, Object>>(response , HttpStatus.CONFLICT) ;
+        }
+
         try{
             partnerToUpdate = partnerRepoService.findOne(id);
         } catch (DataAccessException e){
