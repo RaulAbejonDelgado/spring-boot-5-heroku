@@ -48,6 +48,8 @@ public class Partner implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date createAt;
 
+
+
     private String photo;
 
     @OneToMany(mappedBy = "partner",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -67,10 +69,12 @@ public class Partner implements Serializable {
         this.photo = photo;
     }
 
-    @PrePersist
-    public void prePersist() {
-        this.createAt = new Date();
-    }
+//    @PrePersist
+//    public void prePersist() {
+//        if(this.createAt == null) {
+//            this.createAt = new Date();
+//        }
+//    }
 
     public List<SaleOrder> getSaleOrders() {
         return saleOrders;

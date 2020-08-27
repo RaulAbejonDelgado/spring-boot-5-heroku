@@ -31,7 +31,7 @@ public class PartnerDaoImpl implements IPartner {
     @Override
     public void save(Partner partner) {
         if(partner.getId() != null && partner.getId() > 0){
-            partner.prePersist();
+            //partner.prePersist();
             em.merge(partner);
         }else{
             em.persist(partner);
