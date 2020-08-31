@@ -2,6 +2,7 @@ package com.raul.spring.jpa.springjpav1.models.service;
 
 import com.raul.spring.jpa.springjpav1.models.entity.Partner;
 import com.raul.spring.jpa.springjpav1.models.entity.Product;
+import com.raul.spring.jpa.springjpav1.models.entity.Region;
 import com.raul.spring.jpa.springjpav1.models.entity.SaleOrder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -33,6 +34,8 @@ public interface IPartnerRepoService {
     public void deletePartnerSaleOrderById(Long id);
 
     public SaleOrder fetchByIdWithPartnerWithSoLineWithProduct(Long id);
+
+    public List<Region> findAllRegions();
 
 
 }

@@ -61,3 +61,10 @@ INSERT INTO users(username, password, enabled) VALUES ('drohne', '$2a$10$9RXByRB
 INSERT INTO authorities( user_id, authority) VALUES(1,'ROLE_ADMIN');
 INSERT INTO authorities( user_id, authority) VALUES(1,'ROLE_USER');
 INSERT INTO authorities( user_id, authority) VALUES(2,'ROLE_USER');
+
+
+--/*Regions*/
+INSERT INTO regions( id, name) VALUES(1,'SPAIN');
+INSERT INTO regions( id, name) VALUES(2,'FRANCE');
+INSERT INTO regions( id, name) VALUES(3,'ITALY');
+INSERT INTO regions( id, name) VALUES(4,'NETHERLANDS');

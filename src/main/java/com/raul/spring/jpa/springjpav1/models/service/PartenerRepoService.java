@@ -5,6 +5,7 @@ import com.raul.spring.jpa.springjpav1.models.dao.IProductDao;
 import com.raul.spring.jpa.springjpav1.models.dao.IsaleOrderDao;
 import com.raul.spring.jpa.springjpav1.models.entity.Partner;
 import com.raul.spring.jpa.springjpav1.models.entity.Product;
+import com.raul.spring.jpa.springjpav1.models.entity.Region;
 import com.raul.spring.jpa.springjpav1.models.entity.SaleOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -105,6 +106,12 @@ public class PartenerRepoService implements IPartnerRepoService{
     @Transactional(readOnly = true)
     public SaleOrder fetchByIdWithPartnerWithSoLineWithProduct(Long id) {
         return saleOrderDao.fetchByIdWithPartnerWithSoLineWithProduct(id);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Region> findAllRegions() {
+        return partnerDao.findAllRegions();
     }
 
 

@@ -1,6 +1,7 @@
 package com.raul.spring.jpa.springjpav1.controllers.rest;
 
 import com.raul.spring.jpa.springjpav1.models.entity.Partner;
+import com.raul.spring.jpa.springjpav1.models.entity.Region;
 import com.raul.spring.jpa.springjpav1.models.service.IPartnerRepoService;
 import com.raul.spring.jpa.springjpav1.models.service.IUploadService;
 import com.raul.spring.jpa.springjpav1.view.xml.PartnerList;
@@ -24,6 +25,7 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -129,6 +131,7 @@ public class PartnerRestController {
         partnerToUpdate.setEmail(partner.getEmail());
         partnerToUpdate.setName(partner.getName());
         partnerToUpdate.setSurname(partner.getSurname());
+        partnerToUpdate.setPartnerRegion(partner.getPartnerRegion());
         Partner updatedPartner = new Partner();
 
         updatedPartner = partnerRepoService.saveAndReturnPartner(partnerToUpdate);
@@ -213,6 +216,11 @@ public class PartnerRestController {
         response.put("msg", "The partner has been deleted successfully");
         return new ResponseEntity<Map<String,Object>>(response, HttpStatus.OK);
 
+    }
+
+    @GetMapping(value = {"/partner/region"})
+    public List<Region> getRegions() {
+        return partnerRepoService.findAllRegions();
     }
 
 }

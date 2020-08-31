@@ -1,6 +1,7 @@
 package com.raul.spring.jpa.springjpav1.models.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -48,9 +49,12 @@ public class Partner implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date createAt;
 
-
-
     private String photo;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    //@NotNull
+    private Region partnerRegion;
 
     @OneToMany(mappedBy = "partner",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference
@@ -60,13 +64,14 @@ public class Partner implements Serializable {
         saleOrders = new ArrayList<>();
     }
 
-    public Partner(Long id, String name, String surname, String email, Date createAt, String photo) {
+    public Partner(Long id, String name, String surname, String email, Date createAt, String photo, Region partnerRegion) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.createAt = createAt;
         this.photo = photo;
+        this.partnerRegion = partnerRegion;
     }
 
 //    @PrePersist
@@ -75,6 +80,15 @@ public class Partner implements Serializable {
 //            this.createAt = new Date();
 //        }
 //    }
+
+
+    public Region getPartnerRegion() {
+        return partnerRegion;
+    }
+
+    public void setPartnerRegion(Region partnerRegion) {
+        this.partnerRegion = partnerRegion;
+    }
 
     public List<SaleOrder> getSaleOrders() {
         return saleOrders;
