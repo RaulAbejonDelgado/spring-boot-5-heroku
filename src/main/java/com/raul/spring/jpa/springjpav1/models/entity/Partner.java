@@ -54,7 +54,7 @@ public class Partner implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     //@NotNull
-    private Region partnerRegion;
+    private Region region;
 
     @OneToMany(mappedBy = "partner",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference
@@ -64,14 +64,14 @@ public class Partner implements Serializable {
         saleOrders = new ArrayList<>();
     }
 
-    public Partner(Long id, String name, String surname, String email, Date createAt, String photo, Region partnerRegion) {
+    public Partner(Long id, String name, String surname, String email, Date createAt, String photo, Region region) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.createAt = createAt;
         this.photo = photo;
-        this.partnerRegion = partnerRegion;
+        this.region = region;
     }
 
 //    @PrePersist
@@ -82,12 +82,12 @@ public class Partner implements Serializable {
 //    }
 
 
-    public Region getPartnerRegion() {
-        return partnerRegion;
+    public Region getRegion() {
+        return region;
     }
 
-    public void setPartnerRegion(Region partnerRegion) {
-        this.partnerRegion = partnerRegion;
+    public void setRegion(Region region) {
+        this.region = region;
     }
 
     public List<SaleOrder> getSaleOrders() {

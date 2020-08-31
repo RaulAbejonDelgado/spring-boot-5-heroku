@@ -131,7 +131,7 @@ public class PartnerRestController {
         partnerToUpdate.setEmail(partner.getEmail());
         partnerToUpdate.setName(partner.getName());
         partnerToUpdate.setSurname(partner.getSurname());
-        partnerToUpdate.setPartnerRegion(partner.getPartnerRegion());
+        partnerToUpdate.setRegion(partner.getRegion());
         Partner updatedPartner = new Partner();
 
         updatedPartner = partnerRepoService.saveAndReturnPartner(partnerToUpdate);
